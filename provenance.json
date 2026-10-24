@@ -27,5 +27,6 @@
     "verification": "The adapter pins this published artifact by SHA256. Artifact identity is separate from inference parity.",
     "download_url": "https://huggingface.co/nvidia/GEAR-SONIC/resolve/6733128a3d8a523b1418b06bca3cdf61c8b0987f/sonic_v1_1/model_decoder.onnx",
     "sha256": "34bae8570d4a4421a5391a5c2befd745d4a02d182ec539e5f9da44c091c67509"
-  }
+  },
+  "inference_validation": "validation/native-parity.json"
 }
