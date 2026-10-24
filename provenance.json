@@ -1,7 +1,7 @@
 {
   "model": "sonic-v1-1",
   "display_name": "SONIC v1.1",
-  "submitter": "Motion Challenge",
+  "submitter": "MotionChallenge",
   "submission_type": "maintainer reproduction, not author submission",
   "upstream": "https://github.com/NVlabs/GR00T-WholeBodyControl",
   "source_commit": "45c03facbf848e0c743091b7d9c17952096ff908",
