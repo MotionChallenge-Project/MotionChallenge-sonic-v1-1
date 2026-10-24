@@ -32,5 +32,13 @@
       "sha256": "fb97de22819b2057b41459802128d91723d91a25f0ad73e7bfc41a9cf8365bae",
       "url": "https://huggingface.co/nvidia/GEAR-SONIC/resolve/6733128a3d8a523b1418b06bca3cdf61c8b0987f/sonic_v1_1/model_encoder.onnx"
     }
+  },
+  "default_track": "ideal-proprioception",
+  "observation_tracks": {
+    "ideal-proprioception": {
+      "entrypoint": "restricted:create",
+      "admission_record": "admission.json",
+      "admission_sha256": "5e8d9dfd1fb04565c27950aa3d68a24d67505dca2276c47cabf4978250a0a40b"
+    }
   }
 }
