@@ -7,7 +7,7 @@ import subprocess, tempfile, json, importlib.util, sys, hashlib, re
 import numpy as np
 from scipy.spatial.transform import Rotation as R
 root, source, decoder, encoder = map(lambda x:Path(x).resolve(),sys.argv[1:5])
-sys.path.insert(0,str(root/'motion-challenge/src'))
+sys.path.insert(0,str(root/'MotionChallenge-Core/src'))
 from motion_challenge.sdk import StatePacket,ReferenceFrame
 from motion_challenge.adapters.onnx import vector
 
@@ -105,7 +105,7 @@ for used in [native/'src/g1_deploy_onnx_ref.cpp',native/'src/state_logger.cpp',n
  blob=subprocess.check_output(['git','hash-object',str(used)],text=True).strip()
  assert record[2]==blob, f'upstream file changed: {used.name}'
 policy=mod.SONIC(root,runtime);cfg=policy.cfg
-canonical=tuple(json.loads((root/'motion-challenge/suites/lafan/dataset.json').read_text())['joint_names'])
+canonical=tuple(json.loads((root/'MotionChallenge-Core/suites/lafan/dataset.json').read_text())['joint_names'])
 order=[canonical.index(n) for n in policy.names]
 rng=np.random.default_rng(1602);worst=dict(encoder_observation=0.,history=0.,decoder_input=0.,action=0.,motor_target=0.)
 with tempfile.TemporaryDirectory() as directory:
