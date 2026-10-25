@@ -1,7 +1,7 @@
 """Author SONIC encoder/decoder deployment contract, G1 encoder mode 0."""
+from motion_challenge.adapters.onnx import cpu_session
 from dataclasses import replace
 import numpy as np
-import onnxruntime as ort
 from scipy.spatial.transform import Rotation as R
 from motion_challenge.adapters.onnx import ONNXController, yaw
 from motion_challenge.validation import sha256_file
@@ -21,9 +21,7 @@ class SONIC(ONNXController):
         path = root / artifact['path']
         if sha256_file(path) != artifact['sha256']:
             raise ValueError('encoder checkpoint checksum mismatch')
-        options = ort.SessionOptions()
-        options.intra_op_num_threads = options.inter_op_num_threads = 1
-        self.encoder = ort.InferenceSession(str(path), options, providers=['CPUExecutionProvider'])
+        self.encoder = cpu_session(path, artifact['sha256'])
         self.encoder_dim = self.cfg['encoder_dimension']
         if self.encoder.get_inputs()[0].shape != [1, self.encoder_dim]:
             raise ValueError('encoder input differs from pinned author configuration')
